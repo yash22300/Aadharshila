@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LectureViewActivity">
+    <RelativeLayout
+        android:id="@+id/title_lecture_view_layout"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <include
+            android:id="@+id/back_lecture_view"
+            layout="@layout/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"/>
+
+
+
+        <TextView
+            android:id="@+id/lecture_title_name"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_background"
+            android:text="Topic"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:visibility="visible"
+            android:textColor="@android:color/white"
+            android:gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerInParent="true"
+        android:layout_below="@id/title_lecture_view_layout"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/lecture_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:resize_mode="fit"
+            app:hide_on_touch="true"
+            app:show_timeout="5000"
+            app:fastforward_increment="10000"
+            app:rewind_increment="10000"
+            app:use_controller="true"
+            android:background="@color/smoky_black"
+            app:player_layout_id="@layout/exo_simple_player_view"
+            app:controller_layout_id="@layout/custom_controller"/>
+        <ProgressBar
+            android:id="@+id/progress_spinkit_lecture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

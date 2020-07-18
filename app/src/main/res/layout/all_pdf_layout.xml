@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <View
+        android:id="@+id/pdf_view"
+        android:layout_width="8dp"
+        android:background="@color/smoky_black"
+        android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/pdf_title"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/pdf_view"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/creative_red"
+            android:text="Name"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/pdf_description"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/pdf_view"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:layout_marginLeft="7dp"
+            android:layout_below="@+id/pdf_title"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Description" />
+        </LinearLayout>
+    <!--<ImageView
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circular_background"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_file_download_black_24dp"/>-->
+
+</LinearLayout>>
+</androidx.cardview.widget.CardView>

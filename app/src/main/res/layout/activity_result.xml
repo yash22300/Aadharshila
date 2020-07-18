@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity"
+    android:background="@color/background_color">
+    <include
+        android:visibility="invisible"
+        android:id="@+id/id_no_internet_result_layout"
+        layout="@layout/no_internet_layout"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/title_e_result"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <include
+            android:id="@+id/back_result"
+            layout="@layout/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"/>
+
+
+
+        <TextView
+            android:id="@+id/e_result_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_background"
+            android:text="e-Result"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:visibility="visible"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/result_subject_cardview"
+        android:layout_below="@+id/title_e_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/result_subject_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:textColor="@color/smoky_black"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_below="@+id/result_subject_cardview"
+        android:id="@+id/view_pager_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="80dp"
+        android:paddingEnd="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"/>
+</RelativeLayout>

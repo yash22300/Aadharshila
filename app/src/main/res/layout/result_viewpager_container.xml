@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:adjustViewBounds="true">
+
+    <RelativeLayout
+        android:id="@+id/slider_result_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/creative_red_light">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_result_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true">
+            <RelativeLayout
+                android:id="@+id/result_view_image_background"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:background="@color/creative_red">
+                <ImageView
+                    android:id="@+id/image_slider_result"
+                    android:layout_width="80dp"
+                    android:layout_centerInParent="true"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/chemistry"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/result_view_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/card_result_image">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/result_view_background"
+            android:layout_above="@+id/result_view_more_bottom">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/result_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <RelativeLayout
+                    android:id="@+id/current_statistic_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/creative_red_light"
+                    android:visibility="visible">
+                    <include
+                        layout="@layout/result_layout"
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent" />
+                </RelativeLayout>
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/result_view_more_bottom"
+        android:background="@color/creative_red"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/view_more_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="View More"
+            android:fontFamily="serif"
+            android:textSize="15sp"
+            android:layout_centerInParent="true"
+            android:visibility="visible"/>
+        <ProgressBar
+            android:id="@+id/show_results_progress_bar"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
