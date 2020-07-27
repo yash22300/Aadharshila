@@ -47,10 +47,7 @@ public class BookActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private RelativeLayout noInternetLayout;
     private RelativeLayout mToolbar;
-    private SearchView bookSearch;
     private SwipeRefreshLayout refreshLayout;
-    private String standard;
-    private TextView eBookTitle;
     private ProgressBar progressBar;
 
     @Override
@@ -58,9 +55,6 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_e_book);
 
-
-        bookSearch = findViewById(R.id.search_view_book);
-        eBookTitle = findViewById(R.id.e_book_title);
         progressBar=  findViewById(R.id.pdf_progress_bar);
 
         refreshLayout = findViewById(R.id.refresh_pdf);
@@ -89,21 +83,6 @@ public class BookActivity extends AppCompatActivity {
             }
         });
 
-        if(bookSearch!=null)
-        {
-            bookSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    search(newText);
-                    return true;
-                }
-            });
-        }
 
         mAuth=FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser().getUid();
@@ -182,39 +161,6 @@ public class BookActivity extends AppCompatActivity {
 
     }
 
-    private void search(String s) {
-        final Query query = pdfRef.orderByChild("title")
-                        .startAt(s)
-                        .endAt(s,"\uf8ff");
-
-       /* query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChildren())
-                {
-                    ArrayList<UpdatePdf> arrayList = new ArrayList<>();
-                    arrayList.clear();
-
-                    for (DataSnapshot dss : dataSnapshot.getChildren())
-                    {
-                        final UpdatePdf categoryItem = dss.getValue(UpdatePdf.class);
-                        arrayList.add(categoryItem);
-                    }
-
-                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),arrayList);
-                    pdfListView.setAdapter(myAdapter);
-                    myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-    }
-
-
     private void DisplayAllPdfs() {
 
         Query sortPostInDecendingOrder = pdfRef.orderByChild("count");
@@ -265,8 +211,8 @@ public class BookActivity extends AppCompatActivity {
 
                         if(status.equals("NO"))
                         {
-                            viewHolder.mView.setClickable(false);
-                            mssgLayout.setVisibility(View.VISIBLE);
+                            viewHolder.mView.setClickable(true);
+                            mssgLayout.setVisibility(View.INVISIBLE);
                         }
                         else
                         {

@@ -31,7 +31,9 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 import com.techtitudetribe.aadharshila.BookActivity;
+import com.techtitudetribe.aadharshila.CourseActivity;
 import com.techtitudetribe.aadharshila.LectureActivity;
+import com.techtitudetribe.aadharshila.NewsFeedActivity;
 import com.techtitudetribe.aadharshila.R;
 import com.techtitudetribe.aadharshila.ResultActivity;
 import com.techtitudetribe.aadharshila.TestActivity;
@@ -42,10 +44,10 @@ public class HomeFragment extends Fragment {
     private SliderLayout sliderLayout;
     private FirebaseAuth mAuth;
     private DatabaseReference pdfRef,stuRef;
-    private RelativeLayout eBookLayout,eLectureLayout,eTestLayout,eResultLayout;
+    private RelativeLayout eBookLayout,eLectureLayout,eTestLayout,eResultLayout,courseLayout,newsLayout;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
     private String currentClass,currentUser;
-    private ProgressBar bookProgress,lectureProgress;
+    private ProgressBar bookProgress,lectureProgress,testProgress,resultProgress;
     //private String imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5;
     //private URL url1,url2,url3,url4,url5;
     //private URI uri1,uri2,uri3,uri4,uri5;
@@ -63,6 +65,8 @@ public class HomeFragment extends Fragment {
         sliderLayout = v.findViewById(R.id.imageSlider);
         bookProgress = v.findViewById(R.id.book_progress_bar);
         lectureProgress = v.findViewById(R.id.lecture_progress_bar);
+        resultProgress = v.findViewById(R.id.result_progress_bar);
+        testProgress = v.findViewById(R.id.test_progress_bar);
 
         mAuth= FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser().getUid();
@@ -124,9 +128,24 @@ public class HomeFragment extends Fragment {
         eTestLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), TestActivity.class);
-                startActivity(i);
-                getActivity().finish();
+                testProgress.setVisibility(View.VISIBLE);
+                stuRef = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUser);
+                stuRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        currentClass = dataSnapshot.child("Class").getValue().toString();
+                        Intent i = new Intent(getActivity(), TestActivity.class);
+                        i.putExtra("class",currentClass);
+                        startActivity(i);
+                        getActivity().finish();
+                        testProgress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
@@ -134,7 +153,42 @@ public class HomeFragment extends Fragment {
         eResultLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ResultActivity.class);
+                resultProgress.setVisibility(View.VISIBLE);
+                stuRef = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUser);
+                stuRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        currentClass = dataSnapshot.child("Class").getValue().toString();
+                        Intent i = new Intent(getActivity(), ResultActivity.class);
+                        i.putExtra("class",currentClass);
+                        startActivity(i);
+                        getActivity().finish();
+                        resultProgress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+        courseLayout= v.findViewById(R.id.courses_layout);
+        courseLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CourseActivity.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
+
+        newsLayout = v.findViewById(R.id.news_feed_layout);
+        newsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), NewsFeedActivity.class);
                 startActivity(i);
                 getActivity().finish();
             }
@@ -167,6 +221,8 @@ public class HomeFragment extends Fragment {
                 startActivity(emailIntent);
             }
         });
+
+
 
         return v;
     }
@@ -211,5 +267,7 @@ public class HomeFragment extends Fragment {
                 return new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/mail/u/2/#inbox?compose=new"));
             }
         }
+
+
 
     }

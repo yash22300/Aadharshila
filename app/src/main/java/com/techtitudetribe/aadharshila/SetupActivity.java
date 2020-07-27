@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,10 +20,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,31 +48,36 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class SetupActivity extends AppCompatActivity {
 
-    private EditText setupStudentName,setupStandard,setupContactNo,setupDob,setupGender;
+    private EditText setupStudentName,setupContactNo,setupDob;
     private Button createAccount;
     private ImageView studentProfile;
     private static int GALLERY_PICK=1;
-
+    private Spinner setupGenderSpinner,setupClassSpinner;
     private FirebaseAuth mAuth;
     private DatabaseReference UserRef;
     private StorageReference UserProfileImageRef;
-    String currentUserId,image,download;
+    String currentUserId,image,download,standard;
     private ProgressDialog LoadingBar;
-    Uri uri;
+    private TextView setupGender,setupStandard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
+        setupGender = (TextView) findViewById(R.id.setupGender);
         setupStudentName = (EditText) findViewById(R.id.student_Name);
-        setupStandard = (EditText) findViewById(R.id.setUpClass);
+        setupStandard = (TextView) findViewById(R.id.setUpClass);
         setupContactNo = (EditText) findViewById(R.id.setupContact);
-        setupGender = (EditText) findViewById(R.id.setupGender);
+        setupGenderSpinner = (Spinner) findViewById(R.id.setupGenderSpinner);
+        setupClassSpinner = (Spinner) findViewById(R.id.setupClassSpinner);
         setupDob = (EditText) findViewById(R.id.setup_dob);
         createAccount = (Button) findViewById(R.id.create_new_account);
         studentProfile = (ImageView) findViewById(R.id.student_profile);
@@ -75,6 +87,105 @@ public class SetupActivity extends AppCompatActivity {
         currentUserId=mAuth.getCurrentUser().getUid();
         UserRef= FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserId);
         UserProfileImageRef= FirebaseStorage.getInstance().getReference().child("Profile Image");
+
+        Calendar calendar  = Calendar.getInstance();
+        final int year  = calendar.get(Calendar.YEAR);
+        final int month  = calendar.get(Calendar.MONTH);
+        final int day  = calendar.get(Calendar.DAY_OF_MONTH);
+
+        setupDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        SetupActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String date = day+"-"+month+"-"+year;
+                        setupDob.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+        List<String> Gender = new ArrayList<>();
+        Gender.add(0,"Choose Gender");
+        Gender.add("Male");
+        Gender.add("Female");
+        Gender.add("Other");
+
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter<>(this,R.layout.spinner_item,Gender);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        setupGenderSpinner.setAdapter(dataAdapter);
+        setupGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if ((item.toString()).equals("Choose Gender"))
+                {
+                    setupGender.setText(null);
+                }
+                else
+                {
+                    setupGender.setText(item.toString());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        List<String> Class = new ArrayList<>();
+        Class.add(0,"Choose Class");
+        Class.add("1");
+        Class.add("2");
+        Class.add("3");
+        Class.add("4");
+        Class.add("5");
+        Class.add("6");
+        Class.add("7");
+        Class.add("8");
+        Class.add("9");
+        Class.add("10");
+        Class.add("11");
+        Class.add("12 or above");
+
+        ArrayAdapter<String> dataAdapterClass;
+        dataAdapterClass = new ArrayAdapter<>(this,R.layout.spinner_item,Class);
+        dataAdapterClass.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        setupClassSpinner.setAdapter(dataAdapterClass);
+        setupClassSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                if ((item.toString()).equals("Choose Class"))
+                {
+                    setupStandard.setText(null);
+                }
+                else if((item.toString()).equals("12 or above"))
+                {
+                    setupStandard.setText(item.toString());
+                    standard = "12";
+                }
+                else
+                {
+                    setupStandard.setText(item.toString());
+                    standard = item.toString();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         studentProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,10 +230,10 @@ public class SetupActivity extends AppCompatActivity {
 
     private void checkValidations() {
         String stu_name = setupStudentName.getText().toString();
-        String standard = setupStandard.getText().toString();
         String contactNo = setupContactNo.getText().toString();
         String dob = setupDob.getText().toString();
         String gender = setupGender.getText().toString();
+
 
         if(TextUtils.isEmpty(download))
         {
@@ -157,11 +268,11 @@ public class SetupActivity extends AppCompatActivity {
             userMap.put("DOB",dob);
             userMap.put("Gender",gender);
             userMap.put("Subscription","NO");
-            userMap.put("Test First","YES");
-            userMap.put("Test Second","YES");
-            userMap.put("Test Third","YES");
-            userMap.put("Test Four","YES");
-            userMap.put("Test Five","YES");
+            userMap.put("Test First","NO");
+            userMap.put("Test Second","NO");
+            userMap.put("Test Third","NO");
+            userMap.put("Test Four","NO");
+            userMap.put("Test Five","NO");
 
             UserRef.child("Student Profile").setValue(download);
                    /* .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -208,7 +319,6 @@ public class SetupActivity extends AppCompatActivity {
         finish();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {

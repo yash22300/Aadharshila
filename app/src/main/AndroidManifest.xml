@@ -16,7 +16,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".WalkthroughActivity"></activity>
+
+        <service android:name=".GettingDeviceTokenService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".CourseViewActivity" />
+        <activity android:name=".NewsFeedActivity" />
+        <activity android:name=".CourseActivity" />
+        <activity android:name=".ResultActivity" />
         <activity android:name=".QuestionsActivity" />
         <activity android:name=".TestActivity" />
         <activity

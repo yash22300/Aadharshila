@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private ProgressDialog LoadingBar;
     private FirebaseAuth mAuth;
     private RelativeLayout googleSignInButton;
-    private LoginButton facebookSignInButton;
 
     private CallbackManager mCallbackManager;
 
@@ -79,29 +78,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         LoadingBar = new ProgressDialog(this);
 
         googleSignInButton = findViewById(R.id.google_login_layout);
-        facebookSignInButton = findViewById(R.id.facebook_login_button);
-
-        //For facebook
-        mCallbackManager = CallbackManager.Factory.create();
-        facebookSignInButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG,"onSuccess"+ loginResult);
-                handleFacebookToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAG,"onCancel");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d(TAG,"onError");
-            }
-        });
-
-
 
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,26 +123,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
     }
 
-    private void handleFacebookToken(AccessToken accessToken) {
-        Log.d(TAG,"handleFacebookToken" + accessToken);
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    Log.d(TAG,"sign in with credential : successful");
-                    sendUserToMainActivity();
-                }
-                else
-                {
-                    Log.d(TAG,"sign in with credential : failure");
-                    Toast.makeText(LoginActivity.this,"Authentication Failed",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
 
     private void updateUi(FirebaseUser user) {
         if(user!=null)

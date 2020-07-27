@@ -30,13 +30,13 @@
                 android:src="@drawable/vid_background"
                 android:scaleType="centerCrop"/>
             <ProgressBar
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:id="@+id/vid_progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminate="true"
-                android:indeterminateTint="@color/white"/>
+                android:indeterminateTint="@color/main_color"/>
         </androidx.cardview.widget.CardView>
         <TextView
             android:id="@+id/vid_title"

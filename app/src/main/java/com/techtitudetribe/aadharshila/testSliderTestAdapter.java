@@ -35,12 +35,13 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
     private FirebaseAuth mAuth;
     private DatabaseReference stuRef;
     private String currentUserId,currentClass;
+    private String standard;
 
-    testSliderTestAdapter(List<testSliderItem> sliderItems, ViewPager2 viewPager2,Context context) {
+    testSliderTestAdapter(List<testSliderItem> sliderItems, ViewPager2 viewPager2, Context context, String standard) {
         this.sliderItems = sliderItems;
         this.viewPager2 = viewPager2;
         this.mContext=context;
-
+        this.standard=standard;
     }
 
 
@@ -79,17 +80,52 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
         subject.setTextColor(ContextCompat.getColor(mContext,R.color.white));
         description.setTextColor(ContextCompat.getColor(mContext,R.color.black));
 
-
-
         int colortype=position%5;
         switch (colortype)
         {
             case 0 : topView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_red));
                 bottomView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_red));
                 backgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_red_light));
-                subject.setText("Chemistry");
-                description.setText("Question based on Numericals");
-                bottomView.setOnClickListener(new View.OnClickListener() {
+                switch (standard)
+                {
+                    case "1" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "2" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "3" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "4" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "5" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "6" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "7" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "8" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "9" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "10" : subject.setText("Hindi");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "11" : subject.setText("Chemistry");
+                        description.setText("Question based on Numericals");
+                        break;
+                    case "12" : subject.setText("Chemistry");
+                        description.setText("Question based on Numericals");
+                        break;
+                }
+                /*bottomView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(final View v) {
                             startTest.setVisibility(View.GONE);
@@ -117,7 +153,7 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                                 }
                             });
                         }
-                    });
+                    });*/
                 imageBackgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_red));
                 break;
             case 1 : topView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_green));
@@ -125,7 +161,7 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                 backgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_green_light));
                 subject.setText("Mathematics");
                 description.setText("Numerical questions");
-                bottomView.setOnClickListener(new View.OnClickListener() {
+                /*bottomView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         startTest.setVisibility(View.GONE);
@@ -153,15 +189,52 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                             }
                         });
                     }
-                });
+                });*/
                 imageBackgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_green));
                 break;
             case 2 : topView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_yellow_dark));
                 bottomView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_yellow_dark));
                 backgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_yellow_light));
-                subject.setText("Biology");
-                description.setText("Theortical Questions");
-                bottomView.setOnClickListener(new View.OnClickListener() {
+                switch (standard)
+                {
+                    case "1" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "2" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "3" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "4" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "5" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "6" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "7" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "8" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "9" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "10" : subject.setText("Science");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "11" : subject.setText("Biology");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "12" : subject.setText("Biology");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                }
+                /*bottomView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         startTest.setVisibility(View.GONE);
@@ -189,15 +262,52 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                             }
                         });
                     }
-                });
+                });*/
                 imageBackgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_yellow_dark));
                 break;
             case 3 : topView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_sky_blue));
                 bottomView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_sky_blue));
                 backgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_sky_blue_light));
-                subject.setText("Physics");
-                description.setText("Numerical Questions");
-                bottomView.setOnClickListener(new View.OnClickListener() {
+                switch (standard)
+                {
+                    case "1" : subject.setText("Moral Values");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "2" : subject.setText("Moral Values");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "3" : subject.setText("Moral Values");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "4" : subject.setText("Moral Values");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "5" : subject.setText("Moral Values");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "6" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "7" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "8" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "9" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "10" : subject.setText("GK");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "11" : subject.setText("Physics");
+                        description.setText("Question based on Numerical Concept");
+                        break;
+                    case "12" : subject.setText("Physics");
+                        description.setText("Question based on Numerical Concept");
+                        break;
+                }
+                /*bottomView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         startTest.setVisibility(View.GONE);
@@ -225,15 +335,52 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                             }
                         });
                     }
-                });
+                });*/
                 imageBackgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_sky_blue));
                 break;
             case 4 : topView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_orange));
                 bottomView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_orange));
                 backgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_orange_light));
-                subject.setText("English");
-                description.setText("Grammar based questions");
-                bottomView.setOnClickListener(new View.OnClickListener() {
+                switch (standard)
+                {
+                    case "1" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "2" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "3" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "4" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "5" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "6" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "7" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "8" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "9" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "10" : subject.setText("English");
+                        description.setText("Question based on Theoretical Concept");
+                        break;
+                    case "11" : subject.setText("Accounts");
+                        description.setText("Question based on Numerical Concept");
+                        break;
+                    case "12" : subject.setText("Accounts");
+                        description.setText("Question based on Numerical Concept");
+                        break;
+                }
+                /*bottomView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         startTest.setVisibility(View.GONE);
@@ -261,7 +408,7 @@ public class testSliderTestAdapter extends RecyclerView.Adapter<testSliderTestAd
                             }
                         });
                     }
-                });
+                });*/
                 imageBackgroundView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.creative_orange));
                 break;
         }

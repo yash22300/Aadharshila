@@ -50,12 +50,10 @@
         android:ems="10"
         android:hint="Student Name"
         android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:paddingTop="7dp"
-        android:paddingBottom="7dp"
-        android:paddingRight="10dp"
+        android:padding="10dp"
         android:textColor="@color/smoky_black"
-        android:textSize="15sp" />
+        android:textSize="14sp"
+        android:fontFamily="serif" />
         <EditText
             android:id="@+id/setup_dob"
             android:layout_width="match_parent"
@@ -66,47 +64,76 @@
             android:background="@drawable/icon_background"
             android:ems="10"
             android:hint="DOB"
+            android:focusableInTouchMode="false"
             android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:textColor="@color/smoky_black"
-            android:textSize="15sp" />
-        <EditText
+            android:textSize="14sp"
+            android:fontFamily="serif" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
             android:id="@+id/setupGender"
             android:layout_width="match_parent"
+            android:layout_toLeftOf="@+id/setupGenderSpinner"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/icon_background"
             android:ems="10"
+            android:gravity="center_vertical"
             android:hint="Gender"
             android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:textColor="@color/smoky_black"
-            android:textSize="15sp" />
-        <EditText
-            android:id="@+id/setUpClass"
-            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:fontFamily="serif" />
+        <Spinner
+            android:layout_alignParentRight="true"
+            android:dropDownSelector="@drawable/ic_spinner_down"
+            android:id="@+id/setupGenderSpinner"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:backgroundTint="@color/main_color"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/icon_background"
-            android:ems="10"
-            android:hint="Class"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/smoky_black"
-            android:textSize="15sp" />
+            android:gravity="center_vertical"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/icon_background"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_toLeftOf="@+id/setupClassSpinner"
+                android:id="@+id/setUpClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/icon_background"
+                android:ems="10"
+                android:hint="Class"
+                android:padding="10dp"
+                android:textColor="@color/smoky_black"
+                android:textSize="14sp"
+                android:fontFamily="serif" />
+            <Spinner
+                android:layout_alignParentRight="true"
+                android:dropDownSelector="@drawable/ic_spinner_down"
+                android:id="@+id/setupClassSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:backgroundTint="@color/main_color"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/icon_background"/>
+        </RelativeLayout>
         <EditText
             android:id="@+id/setupContact"
             android:layout_width="match_parent"
@@ -117,25 +144,29 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/icon_background"
             android:ems="10"
+            android:maxLength="10"
             android:hint="Contact Number"
             android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:textColor="@color/smoky_black"
-            android:textSize="15sp" />
+            android:textSize="14sp"
+            android:fontFamily="serif" />
         <Button
             android:id="@+id/create_new_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/button_background"
-            android:padding="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
             android:text="Create Account"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:fontFamily="serif"
             android:textAllCaps="false"
             android:textColor="#ffffff" />
     </LinearLayout>

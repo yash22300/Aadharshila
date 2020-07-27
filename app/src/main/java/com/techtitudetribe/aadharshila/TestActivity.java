@@ -30,6 +30,7 @@ public class TestActivity extends AppCompatActivity {
     private ViewPager2 viewPager2;
     private Handler sliderHandler = new Handler();
     private RelativeLayout mToolbar;
+    private String standard;
 
 
     @Override
@@ -42,13 +43,85 @@ public class TestActivity extends AppCompatActivity {
         pageIndicatorView.setCount(5);
         pageIndicatorView.setAnimationType(AnimationType.NONE);
 
-        List<testSliderItem> sliderItems = new ArrayList<>();
-        sliderItems.add(new testSliderItem(R.drawable.chemistry));
-        sliderItems.add(new testSliderItem(R.drawable.maths));
-        sliderItems.add(new testSliderItem(R.drawable.biology));
-        sliderItems.add(new testSliderItem(R.drawable.physics));
-        sliderItems.add(new testSliderItem(R.drawable.english));
+        standard = getIntent().getExtras().getString("class");
 
+
+        List<testSliderItem> sliderItems = new ArrayList<>();
+        switch (standard)
+        {
+            case "1"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.moral));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "2"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.moral));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "3"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.moral));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "4"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.moral));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "5"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.moral));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "6"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "7"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "8"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "9"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "10"  : sliderItems.add(new testSliderItem(R.drawable.hindi));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.science));
+                sliderItems.add(new testSliderItem(R.drawable.g_k));
+                sliderItems.add(new testSliderItem(R.drawable.english));
+                break;
+            case "11"  : sliderItems.add(new testSliderItem(R.drawable.chemistry));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.biology));
+                sliderItems.add(new testSliderItem(R.drawable.physics));
+                sliderItems.add(new testSliderItem(R.drawable.accounts));
+                break;
+            case "12"  : sliderItems.add(new testSliderItem(R.drawable.chemistry));
+                sliderItems.add(new testSliderItem(R.drawable.maths));
+                sliderItems.add(new testSliderItem(R.drawable.biology));
+                sliderItems.add(new testSliderItem(R.drawable.physics));
+                sliderItems.add(new testSliderItem(R.drawable.accounts));
+                break;
+        }
 
 
         /*List<testSliderItem> sliderItems = new ArrayList<>();
@@ -68,7 +141,7 @@ public class TestActivity extends AppCompatActivity {
             }
         });
 
-        viewPager2.setAdapter(new testSliderTestAdapter(sliderItems,viewPager2,getApplicationContext()));
+        viewPager2.setAdapter(new testSliderTestAdapter(sliderItems,viewPager2,getApplicationContext(),standard));
 
 
         viewPager2.setClipToPadding(false);

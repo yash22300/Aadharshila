@@ -31,10 +31,11 @@
             android:background="@drawable/title_background"
             android:text="Aadharshila"
             android:paddingTop="10dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_centerVertical="true"
             android:paddingBottom="10dp"
             android:paddingLeft="50dp"
+            android:fontFamily="serif"
             android:paddingRight="50dp"
             android:textStyle="bold"
             android:textAllCaps="false"
@@ -230,8 +231,15 @@
                     android:text="e-Test"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
-
                     android:textStyle="bold" />
+                <ProgressBar
+                    android:id="@+id/test_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/smoky_black"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -265,6 +273,14 @@
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+                <ProgressBar
+                    android:id="@+id/result_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/smoky_black"/>
             </RelativeLayout>
 
 
@@ -318,7 +334,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-
+                android:id="@+id/news_feed_layout"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
