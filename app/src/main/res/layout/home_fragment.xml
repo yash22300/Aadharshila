@@ -106,11 +106,13 @@
 
         <RelativeLayout
             android:id="@+id/lecture_layout"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:background="@drawable/detail_background"
             android:backgroundTint="@color/creative_sky_blue"
             android:paddingTop="10dp"
@@ -118,8 +120,8 @@
 
             <ImageView
                 android:id="@+id/lecture_image"
-                android:layout_width="154dp"
-                android:layout_height="148dp"
+                android:layout_width="134dp"
+                android:layout_height="128dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/lecture" />
 
@@ -132,7 +134,7 @@
                 android:fontFamily="serif"
                 android:text="e-Lecture"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
             <ProgressBar
                 android:id="@+id/lecture_progress_bar"
@@ -143,10 +145,15 @@
                 android:indeterminate="true"
                 android:indeterminateTint="@color/smoky_black"/>
         </RelativeLayout>
-
+        <View
+            android:layout_width="1dp"
+            android:layout_height="160dp"
+            android:background="@color/smoky_black"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
         <RelativeLayout
             android:id="@+id/e_book_layout"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
@@ -155,13 +162,15 @@
             android:backgroundTint="@color/creative_red"
             android:orientation="vertical"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp">
 
 
             <ImageView
                 android:id="@+id/e_book_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="134dp"
+                android:layout_height="128dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/e_book" />
 
@@ -174,7 +183,7 @@
                 android:fontFamily="serif"
                 android:text="e-Book"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
             <ProgressBar
                 android:id="@+id/book_progress_bar"
@@ -204,20 +213,19 @@
 
             <RelativeLayout
                 android:id="@+id/test_layout"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/detail_background"
                 android:backgroundTint="@color/creative_orange"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/test_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="134dp"
+                    android:layout_height="128dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/test" />
 
@@ -230,7 +238,7 @@
                     android:fontFamily="serif"
                     android:text="e-Test"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
                 <ProgressBar
                     android:id="@+id/test_progress_bar"
@@ -241,10 +249,15 @@
                     android:indeterminate="true"
                     android:indeterminateTint="@color/smoky_black"/>
             </RelativeLayout>
-
+            <View
+                android:layout_width="1dp"
+                android:layout_height="160dp"
+                android:background="@color/smoky_black"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
             <RelativeLayout
                 android:id="@+id/result_layout"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -252,13 +265,12 @@
                 android:background="@drawable/detail_background"
                 android:backgroundTint="@color/creative_green"
                 android:orientation="vertical"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/result_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="134dp"
+                    android:layout_height="128dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/result" />
 
@@ -271,7 +283,7 @@
                     android:fontFamily="serif"
                     android:text="e-Result"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
                 <ProgressBar
                     android:id="@+id/result_progress_bar"
@@ -302,20 +314,19 @@
 
             <RelativeLayout
                 android:id="@+id/courses_layout"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/detail_background"
                 android:backgroundTint="@color/creative_violet"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/course_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="134dp"
+                    android:layout_height="128dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/course" />
 
@@ -328,14 +339,19 @@
                     android:fontFamily="serif"
                     android:text="e-Course"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
 
                     android:textStyle="bold" />
             </RelativeLayout>
-
+            <View
+                android:layout_width="1dp"
+                android:layout_height="160dp"
+                android:background="@color/smoky_black"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
             <RelativeLayout
                 android:id="@+id/news_feed_layout"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -343,13 +359,12 @@
                 android:background="@drawable/detail_background"
                 android:backgroundTint="@color/creative_yellow"
                 android:orientation="vertical"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/news_feed_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="134dp"
+                    android:layout_height="128dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/news" />
 
@@ -362,7 +377,7 @@
                     android:fontFamily="serif"
                     android:text="e-News Feed"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
